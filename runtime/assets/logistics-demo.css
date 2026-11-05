@@ -1,0 +1,925 @@
+/* Дополнение к неизменной теме панели v0.4.17 */
+.logistics-nav-note{margin:4px 8px 0;color:var(--text-subtle);font-size:9px;line-height:1.3}
+.logistics-demo-banner{padding:8px 10px;border:1px solid rgba(217,155,38,.5);border-radius:var(--radius);background:var(--status-yellow-bg);color:#f1ca72;font-size:11px}
+.logistics-list-actions{display:flex;gap:6px}
+.logistics-card-meta{display:grid;grid-template-columns:1fr auto;gap:4px 8px;color:var(--text-muted);font-size:10.5px}
+.logistics-card-meta strong{color:var(--text-main);font-weight:600}
+.logistics-badge{display:inline-flex;align-items:center;gap:5px;padding:2px 7px;border:1px solid var(--border-line);border-radius:3px;font-size:10px;font-weight:700}
+.logistics-badge.ok{color:#61cf92;border-color:rgba(46,139,87,.55);background:var(--status-green-bg)}
+.logistics-badge.warn{color:#f1c264;border-color:rgba(217,155,38,.55);background:var(--status-yellow-bg)}
+.logistics-badge.off{color:#ff8585;border-color:rgba(217,67,67,.5);background:var(--status-red-bg)}
+.logistics-badge.neutral{color:#b8c4ce;background:#172023}
+.logistics-detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.logistics-detail-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.logistics-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.logistics-tabs{display:flex;gap:2px;border-bottom:1px solid var(--border-line);background:var(--bg-card);overflow-x:auto}
+.logistics-tabs button{position:relative;padding:9px 12px;border:0;background:transparent;color:var(--text-muted);font:inherit;font-size:11px;font-weight:700;cursor:pointer}
+.logistics-tabs button.active{color:#fff}
+.logistics-tabs button.active:after{position:absolute;right:8px;bottom:0;left:8px;height:3px;background:var(--accent-orange);content:""}
+.logistics-note{padding:10px 12px;color:var(--text-muted);font-size:11px;line-height:1.5}
+.logistics-note strong{color:var(--text-main)}
+
+.pagination-bar[hidden]{display:none!important}
+
+.logistics-map-shell{position:relative;overflow:hidden;margin-top:12px!important;border:0!important;border-radius:12px!important;background:transparent!important}
+.logistics-map{height:430px!important;min-height:430px!important;width:100%!important;border:0!important;border-radius:12px!important;overflow:hidden}
+.logistics-map-route-label{position:absolute;top:12px;left:12px;z-index:3;display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid rgba(56,64,70,.22);border-radius:7px;color:#30383e;background:rgba(255,255,255,.94);box-shadow:0 2px 9px rgba(38,49,56,.18);font-size:11px;font-weight:700;pointer-events:none}
+.logistics-route-swatch{display:inline-block;width:25px;height:5px;border:1px solid #fff;border-radius:4px;background:#ff5a00;box-shadow:0 0 0 1px rgba(53,58,62,.18)}
+.logistics-route-marker{display:grid;width:29px;height:29px;place-items:center;border:3px solid #fff;border-radius:50%;color:#fff;box-shadow:0 2px 8px rgba(25,32,38,.35);font:800 12px/1 "Yandex Sans Text",sans-serif}
+.logistics-route-marker.start{background:#25864d}
+.logistics-route-marker.finish{background:#d74435}
+.logistics-map .maplibregl-ctrl-group{overflow:hidden;border:1px solid rgba(55,63,70,.22);border-radius:7px;box-shadow:0 2px 8px rgba(42,51,58,.17)}
+.logistics-map .maplibregl-ctrl-scale{border-color:#5f6b73;color:#38434a;background:rgba(255,255,255,.8)}
+.logistics-map-unavailable{display:grid;height:100%;place-items:center;padding:18px;color:#43515a;background:#e9edf0;text-align:center;font-size:12px}
+
+.logistics-map-route-meta{padding-left:3px;color:#6c747d;font-weight:600;white-space:nowrap}
+.logistics-map-fit{position:absolute;top:12px;right:12px;z-index:4;display:grid;width:32px;height:32px;place-items:center;padding:0;border:1px solid rgba(56,64,70,.25);border-radius:7px;color:#344047;background:rgba(255,255,255,.96);box-shadow:0 2px 8px rgba(42,51,58,.17);cursor:pointer}
+.logistics-map-fit svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+.logistics-map-fit:hover{color:#ff5a00;background:#fff}
+.logistics-map-fit:focus-visible{outline:2px solid #ff5a00;outline-offset:1px}
+.logistics-map-expand{top:52px}
+.logistics-map-expand svg{stroke-width:1.7}
+.logistics-map-dialog{box-sizing:border-box;width:calc(100vw - 48px);height:calc(100vh - 48px);max-width:none;max-height:none;margin:auto;padding:0;border:0;border-radius:12px;background:transparent;overflow:hidden;color:#fff;box-shadow:none}
+.logistics-map-dialog::backdrop{background:rgba(0,0,0,.65)}
+.logistics-map-dialog-body{height:100%;padding:0;box-sizing:border-box}
+.logistics-map-dialog .logistics-map-shell{height:100%;margin-top:0!important;border-radius:12px!important}
+.logistics-map-dialog .logistics-map{height:100%!important;min-height:0!important}
+.logistics-map-dialog .logistics-map-placeholder{display:none}
+@media (max-width:700px){.logistics-map-dialog{width:calc(100vw - 24px);height:calc(100vh - 24px)}.logistics-map-dialog-body{padding:0}}
+
+/* ==========================================================================
+   ИДЕАЛЬНАЯ, ИЗЫСКАННАЯ И СИММЕТРИЧНАЯ ВЁРСТКА ПАНЕЛИ ЛОГИСТИКИ
+   ========================================================================== */
+
+/* Двухколоночный макет */
+.logistics-split-row {
+  display: grid !important;
+  grid-template-columns: 420px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: start !important;
+}
+
+/* Левая карточка расчёта */
+.logistics-calculation {
+  max-width: 420px !important;
+  box-sizing: border-box !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  background: #09090b !important;
+  padding: 12px 14px 10px !important;
+}
+
+.logistics-calculation .logistics-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Верхний плашка-баннер с кнопкой расчета */
+.logistics-best-command {
+  grid-column: 1 / -1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 6px 10px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 6px !important;
+  margin-bottom: 4px !important;
+  box-sizing: border-box !important;
+  min-height: 40px !important;
+}
+
+.logistics-best-command label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px !important;
+}
+
+.logistics-best-command label > span {
+  font-size: 8.5px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+}
+
+.logistics-best-value {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+}
+
+.logistics-best-command small {
+  font-size: 9.5px !important;
+  color: var(--text-subtle, #788590) !important;
+  line-height: 1.1 !important;
+}
+
+/* ТАЙМЛАЙН ТОЧЕК А И Б */
+.logistics-timeline-container {
+  grid-column: 1 / -1 !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  padding-left: 20px !important;
+  margin-top: 4px !important;
+  margin-bottom: 0px !important;
+  box-sizing: border-box !important;
+}
+
+/* Вертикальная линия точно от центра точки А до центра точки Б */
+.logistics-timeline-line {
+  position: absolute !important;
+  left: 4px !important;
+  top: 32px !important;
+  height: 60px !important;
+  width: 2px !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  z-index: 1 !important;
+}
+
+.logistics-timeline-point {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  width: 100% !important;
+}
+
+/* Маркеры точек */
+.logistics-timeline-dot {
+  position: absolute !important;
+  left: -20px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  z-index: 10 !important;
+}
+
+.logistics-timeline-dot.dot-green {
+  top: 28px !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15) !important;
+}
+
+.logistics-timeline-dot.dot-orange {
+  top: 28px !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Заголовки точек маршрута */
+.logistics-timeline-label {
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+}
+
+.label-green {
+  color: #ffffff !important;
+}
+
+.label-orange {
+  color: #ffffff !important;
+}
+
+.address-review-star {
+  margin-left: 3px;
+  color: #ff4d4f;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.logistics-timeline-content {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* Поля адресов А и Б */
+.logistics-address-val {
+  display: flex !important;
+  align-items: center !important;
+  height: 32px !important;
+  padding: 0 10px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 4px !important;
+  color: #ffffff !important;
+  font-family: "Yandex Sans Text", sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.logistics-timeline-content .input-unit-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Фикс наложения текста адреса на кнопку "Ввод руками" */
+.logistics-calculation .input-unit-wrap input[name="delivery_address"],
+.logistics-timeline-content input[name="delivery_address"],
+.logistics-calculation .logistics-timeline-content input.delivery-address-input {
+  width: 100% !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  box-sizing: border-box !important;
+  padding: 0 115px 0 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 4px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #ffffff !important;
+  font-family: "Yandex Sans Text", sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+}
+
+/* Ровная сетка распределения multi-stop груза */
+.logistics-calculation .dellin-split-fields {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin-top: 8px !important;
+  min-width: 0 !important;
+}
+
+.logistics-calculation .dellin-split-fields > label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+  min-width: 0 !important;
+  color: var(--text-muted) !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+}
+
+.logistics-calculation .dellin-split-fields .input-unit-wrap input {
+  padding-right: 6px !important;
+}
+
+/* Кнопка "Ввод руками" */
+.btn-manual-address-tag {
+  position: absolute !important;
+  right: 5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 5 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  height: 23px !important;
+  padding: 2px 8px !important;
+  box-sizing: border-box !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 4px !important;
+  background: rgba(255, 98, 0, 0.12) !important;
+  color: #a1a1aa !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+}
+
+.btn-manual-address-tag svg.icon-pencil {
+  display: block !important;
+  width: 11px !important;
+  height: 11px !important;
+  min-width: 11px !important;
+  max-width: 11px !important;
+  min-height: 11px !important;
+  max-height: 11px !important;
+  stroke: currentColor !important;
+  flex-shrink: 0 !important;
+}
+
+.logistics-suggestions-dropdown {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + 5px);
+  right: 0;
+  left: 0;
+  max-height: 264px;
+  overflow-y: auto;
+  border: 1px solid #364147;
+  border-radius: 6px;
+  background: #11181b;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
+}
+
+.logistics-suggestions-title {
+  padding: 8px 10px 6px;
+  border-bottom: 1px solid #273137;
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+}
+
+.logistics-suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 0;
+  border-bottom: 1px solid #202a2f;
+  background: transparent;
+  color: #eef3f5;
+  font: 500 11.5px/1.3 "Yandex Sans Text", sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.logistics-suggestion-item:last-child {
+  border-bottom: 0;
+}
+
+.logistics-suggestion-item:hover,
+.logistics-suggestion-item:focus-visible,
+.logistics-suggestion-item.is-active {
+  outline: none;
+  background: rgba(255, 98, 0, 0.14);
+  color: #fff;
+}
+
+.logistics-suggestion-item .suggestion-icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  color: #ff8533;
+}
+
+.logistics-suggestion-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Подписи и поля параметров груза */
+.logistics-calculation .logistics-form > label,
+.logistics-dimensions-grid > label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+  min-width: 0 !important;
+  color: var(--text-muted) !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+}
+
+.logistics-calculation .logistics-form > label > span,
+.logistics-dimensions-grid > label > span {
+  display: block !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.logistics-calculation .input-unit-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 30px !important;
+  min-width: 0 !important;
+}
+
+.logistics-calculation .input-unit-wrap input {
+  width: 100% !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  box-sizing: border-box !important;
+  padding: 4px 28px 4px 6px !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 4px !important;
+  background: #09090b !important;
+  color: #ffffff !important;
+  font-family: "Yandex Sans Text", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums !important;
+  text-align: right !important;
+  appearance: textfield !important;
+  -moz-appearance: textfield !important;
+}
+
+.logistics-calculation input::-webkit-outer-spin-button,
+.logistics-calculation input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.logistics-calculation .input-unit {
+  position: absolute !important;
+  right: 7px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: var(--text-muted) !important;
+  pointer-events: none !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+}
+
+/* Настройки отступов для длинных единиц измерения */
+.logistics-calculation label:has(input[name="cargo_places"]) input {
+  padding-right: 40px !important;
+}
+
+.logistics-calculation label:has(input[name="cargo_places"]) .input-unit {
+  right: 6px !important;
+}
+
+/* Сетка 3 габаритов во втором ряду */
+.logistics-dimensions-grid {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin-top: 2px !important;
+}
+
+/* Правая секция "Предложения логистов" */
+.logistics-offers-section {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  background: #121212 !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.logistics-offers-section .section-heading {
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--border-soft) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+.logistics-offers {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  padding: 12px !important;
+}
+
+.logistics-offer {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 6px !important;
+}
+
+.logistics-offer.best {
+  border-color: rgba(255, 255, 255, 0.20) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.logistics-offer > div:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+}
+
+.logistics-offer strong {
+  display: block !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+.logistics-offer span {
+  display: block !important;
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+}
+
+.logistics-offer-price {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+.logistics-offer-note,
+.logistics-offer > details {
+  grid-column: 1 / -1 !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+.logistics-offer-note {
+  color: var(--text-muted) !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+.logistics-offer.best .logistics-offer-price {
+  color: #ffffff !important;
+}
+
+.logistics-best-command, .logistics-auto-pickup {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1100px) {
+  .logistics-split-row {
+    grid-template-columns: 1fr !important;
+  }
+  .logistics-calculation {
+    max-width: none !important;
+  }
+}
+
+
+
+
+
+
+/* ==========================================================================
+   МОДАЛЬНЫЕ ОКНА И ФОРМЫ ЛОГИСТИКИ (.logistics-form-dialog)
+   ========================================================================== */
+
+/* Затенение заднего фона */
+dialog.logistics-form-dialog::backdrop {
+  background: rgba(10, 15, 18, 0.78) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Окно диалога */
+dialog.logistics-form-dialog[open] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  width: min(680px, calc(100vw - 32px)) !important;
+  height: min(620px, calc(100vh - 48px)) !important;
+  max-height: calc(100vh - 48px) !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 98, 0, 0.35) !important;
+  border-radius: 10px !important;
+  background: #09090b !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 98, 0, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  z-index: 9999 !important;
+}
+
+/* Шапка модального окна */
+.logistics-form-head {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid var(--border-soft, #222d32) !important;
+  background: #09090b !important;
+}
+
+.logistics-form-head h2 {
+  margin: 0 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* Кнопка закрытия модалки (крестик) */
+.logistics-form-head .dialog-close-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  padding: 0 !important;
+  border: 1px solid var(--border-soft, #2a3c42) !important;
+  border-radius: 6px !important;
+  background: #1a262b !important;
+  color: var(--text-muted, #94a3b8) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.logistics-form-head .dialog-close-btn:hover {
+  color: #ffffff !important;
+  border-color: #ff6200 !important;
+  background: rgba(255, 98, 0, 0.15) !important;
+}
+
+/* Форма модального окна */
+.logistics-form-dialog form.logistics-form {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Изолированный прокручиваемый блок с полями */
+.logistics-form-dialog .logistics-form-fields {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px 14px !important;
+  padding: 18px 20px 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* Метки и поля */
+.logistics-form-dialog label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  min-width: 0 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+.logistics-form-dialog label.wide {
+  grid-column: 1 / -1 !important;
+}
+
+/* Инпуты, селекты и текстовые области */
+.logistics-form-dialog input[type="text"],
+.logistics-form-dialog input[type="number"],
+.logistics-form-dialog input[type="date"],
+.logistics-form-dialog input[type="datetime-local"],
+.logistics-form-dialog select,
+.logistics-form-dialog textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 6px 10px !important;
+  border: 1px solid var(--border-soft, #263339) !important;
+  border-radius: 6px !important;
+  background: #09090b !important;
+  color: #ffffff !important;
+  font-family: "Yandex Sans Text", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.logistics-form-dialog input[type="text"],
+.logistics-form-dialog input[type="number"],
+.logistics-form-dialog input[type="date"],
+.logistics-form-dialog input[type="datetime-local"],
+.logistics-form-dialog select {
+  height: 34px !important;
+  min-height: 34px !important;
+}
+
+.logistics-form-dialog textarea {
+  min-height: 64px !important;
+  resize: vertical !important;
+}
+
+.logistics-form-dialog input:focus,
+.logistics-form-dialog select:focus,
+.logistics-form-dialog textarea:focus {
+  outline: none !important;
+  border-color: #ff6200 !important;
+  box-shadow: 0 0 0 2px rgba(255, 98, 0, 0.2) !important;
+}
+
+.logistics-form-dialog select option {
+  background: #09090b !important;
+  color: #ffffff !important;
+}
+
+/* Обертка поля с единицами измерения */
+.logistics-form-dialog .input-unit-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.logistics-form-dialog .input-unit-wrap input {
+  width: 100% !important;
+}
+
+/* Баннеры и подсказки */
+.logistics-form-dialog .logistics-demo-banner {
+  grid-column: 1 / -1 !important;
+  margin-top: 4px !important;
+}
+
+/* Статус отправки */
+.logistics-form-status {
+  grid-column: 1 / -1 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #f1c264 !important;
+  min-height: 16px !important;
+}
+
+.logistics-form-status.error {
+  color: #ff8585 !important;
+}
+
+/* Фиксированный неперекрывающий футер кнопок действий */
+.logistics-form-dialog .logistics-form-actions {
+  flex: 0 0 auto !important;
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  padding: 14px 20px !important;
+  border-top: 1px solid var(--border-soft, #263339) !important;
+  background: #09090b !important;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.25) !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+}
+
+.logistics-form-dialog .logistics-form-actions button {
+  height: 34px !important;
+  padding: 0 18px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+
+
+/* Styling for bottom logistics parameters button & popup */
+.logistics-settings-bottom {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 4px !important;
+}
+
+.logistics-settings-dropdown {
+  position: relative !important;
+  width: 100% !important;
+}
+
+.logistics-settings-dropdown summary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  background: #18181b !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 6px !important;
+  color: #ededed !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  list-style: none !important;
+}
+
+.logistics-settings-dropdown summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.logistics-settings-dropdown summary:hover {
+  background: #27272a !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.logistics-settings-panel {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  width: 380px !important;
+  max-width: 90vw !important;
+  background: #121212 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  padding: 14px !important;
+  z-index: 1000 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9) !important;
+  box-sizing: border-box !important;
+}
+
+/* Allow address suggestions and popups to float cleanly over card boundaries */
+.logistics-calculation,
+.detail-section.logistics-calculation,
+.logistics-form,
+.logistics-timeline-container,
+.logistics-timeline-point,
+.logistics-timeline-content,
+.logistics-timeline-content .input-unit-wrap {
+  overflow: visible !important;
+}
+
+/* Ensure suggestions dropdown has top priority z-index and dark Vercel styling */
+.logistics-suggestions-dropdown {
+  position: absolute !important;
+  z-index: 9999 !important;
+  top: calc(100% + 5px) !important;
+  right: 0 !important;
+  left: 0 !important;
+  max-height: 280px !important;
+  overflow-y: auto !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  background: #121212 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95) !important;
+}
+
+
+.logistics-best-command .btn-orange {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  height: 28px !important;
+  padding: 0 10px !important;
+  font-size: 11.5px !important;
+  border-radius: 5px !important;
+}
+
+/* Ensure suggestions overlay floats above all card elements and map */
+.logistics-calculation,
+.detail-section,
+.detail-section.logistics-calculation,
+.logistics-form,
+.logistics-timeline-container,
+.logistics-timeline-point,
+.logistics-timeline-content,
+.logistics-timeline-content .input-unit-wrap {
+  overflow: visible !important;
+}
+
+.logistics-suggestions-dropdown {
+  position: absolute !important;
+  z-index: 9999 !important;
+  top: calc(100% + 5px) !important;
+  right: 0 !important;
+  left: 0 !important;
+  max-height: 280px !important;
+  overflow-y: auto !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  background: #121212 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Remove empty status placeholder gap */
+.logistics-form-status:empty {
+  display: none !important;
+}
+
+/* Grey styling for empty offers placeholder */
+.logistics-empty-action {
+  padding: 14px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 6px !important;
+  color: #a1a1aa !important;
+}

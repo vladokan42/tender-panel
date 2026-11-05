@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="610" viewBox="0 0 1200 610" role="img" aria-labelledby="title desc">
+  <title id="title">Синтетическая иллюстрация интерфейса</title>
+  <desc id="desc">Условный макет рабочего экрана с вымышленными демоданными товаров, сопоставления и доставки.</desc>
+  <rect width="1200" height="610" rx="22" fill="#090c11"/>
+  <rect x="20" y="20" width="1160" height="570" rx="18" fill="#0e1319" stroke="#2c3540"/>
+  <rect x="20" y="20" width="1160" height="45" rx="18" fill="#141a22"/>
+  <path d="M20 48v17h1160V48" fill="#141a22"/>
+  <circle cx="45" cy="42" r="5" fill="#f07178"/><circle cx="63" cy="42" r="5" fill="#d6a85a"/><circle cx="81" cy="42" r="5" fill="#65e6bd"/>
+  <text x="107" y="48" fill="#aeb8c3" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17">ТЕНДЕРНАЯ ПАНЕЛЬ · ДЕМОНСТРАЦИОННЫЙ МАКЕТ</text>
+  <rect x="872" y="29" width="276" height="27" rx="13" fill="#1b2520" stroke="#3c7f69"/>
+  <text x="893" y="48" fill="#b7ead8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" font-weight="600" letter-spacing=".5">СИНТЕТИЧЕСКИЙ МАКЕТ</text>
+
+  <rect x="40" y="83" width="165" height="486" rx="12" fill="#111820" stroke="#26303b"/>
+  <text x="59" y="119" fill="#edf1f5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="19" font-weight="700">Рабочий стол</text>
+  <text x="59" y="162" fill="#8d9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">РАЗДЕЛЫ</text>
+  <rect x="53" y="177" width="139" height="38" rx="8" fill="#1b2925" stroke="#3c7f69"/>
+  <circle cx="70" cy="196" r="4" fill="#65e6bd"/>
+  <text x="84" y="202" fill="#dff8ef" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16">Карточка</text>
+  <text x="70" y="250" fill="#b7c0ca" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16">Требования</text>
+  <text x="70" y="287" fill="#b7c0ca" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16">Предложения</text>
+  <text x="70" y="324" fill="#b7c0ca" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16">Логистика</text>
+  <path d="M56 349h128" stroke="#2b3540"/>
+  <text x="59" y="383" fill="#8d9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">СТАТУС (ДЕМО)</text>
+  <text x="59" y="414" fill="#c6ced7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Расчёт готов</text>
+  <text x="59" y="436" fill="#8d9aa7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14">2 поставщика</text>
+
+  <text x="231" y="111" fill="#8d9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" letter-spacing="1">КАРТОЧКА ЗАКУПКИ / ПРИМЕР</text>
+  <text x="231" y="151" fill="#f0f3f7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="26" font-weight="650">Закупка № 037310000000000001 (демо)</text>
+  <rect x="231" y="169" width="196" height="30" rx="15" fill="#14251f" stroke="#3c7f69"/>
+  <circle cx="248" cy="184" r="4" fill="#65e6bd"/>
+  <text x="261" y="190" fill="#b7ead8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Синтетические данные</text>
+  <rect x="443" y="169" width="206" height="30" rx="15" fill="#1c2530" stroke="#3d5066"/>
+  <text x="460" y="190" fill="#c2d5ec" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Спецификация разобрана</text>
+
+  <rect x="231" y="221" width="920" height="118" rx="12" fill="#111820" stroke="#2a3540"/>
+  <text x="253" y="254" fill="#8d9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">ПОЗИЦИЯ СПЕЦИФИКАЦИИ (ДЕМО)</text>
+  <text x="253" y="286" fill="#e8edf2" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="19" font-weight="600">Фильтр-патрон тонкой очистки 10 мкм (демо)</text>
+  <text x="253" y="316" fill="#96a2ae" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Арт. FP-10M · полипропилен · 1 200 шт · НМЦК 650 ₽/шт</text>
+  <path d="M680 239v82" stroke="#2a3540"/>
+  <text x="710" y="254" fill="#8d9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">ТРЕБОВАНИЯ И ДОКУМЕНТЫ (ДЕМО)</text>
+  <text x="710" y="286" fill="#e8edf2" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17">ГОСТ Р 51232 · Паспорт качества</text>
+  <text x="710" y="316" fill="#96a2ae" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Срок годности ≥ 80% · статус: подтверждено (демо)</text>
+
+  <rect x="231" y="360" width="920" height="184" rx="12" fill="#111820" stroke="#2a3540"/>
+  <text x="253" y="392" fill="#8d9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">СОПОСТАВЛЕННЫЕ ПРЕДЛОЖЕНИЯ И ЛОГИСТИКА (ДЕМО)</text>
+  <path d="M253 407h876" stroke="#2a3540"/>
+  <text x="253" y="438" fill="#c6ced7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16" font-weight="600">ООО «ПромФильтр» (демо)</text>
+  <text x="506" y="438" fill="#96a2ae" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Точное совпадение: FP-10M · 1 500 шт на складе</text>
+  <text x="890" y="438" fill="#65e6bd" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">480 ₽/шт · склад ЦФО</text>
+  <path d="M253 454h876" stroke="#242e38"/>
+  <text x="253" y="486" fill="#c6ced7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16" font-weight="600">ТД «ЭкоТех» (демо)</text>
+  <text x="506" y="486" fill="#96a2ae" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="15">Аналог: ЭТ-10-PP · сертификат приложен</text>
+  <text x="890" y="486" fill="#65e6bd" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">510 ₽/шт · под заказ</text>
+  <path d="M253 502h876" stroke="#242e38"/>
+  <text x="253" y="530" fill="#aab6c4" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">ДОСТАВКА (ДЕМО):</text>
+  <text x="390" y="530" fill="#8d9aa7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14">Склад ЦФО → Екатеринбург · Газель 1,5 т · 1 420 км · 38 000 ₽ · Срок 2 дня</text>
+  <rect x="231" y="555" width="920" height="1" fill="#2a3540"/>
+  <text x="231" y="579" fill="#7f8b98" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">ВСЕ НАЗВАНИЯ, ТОВАРЫ И ТАРИФЫ В ЭТОМ МАКЕТЕ СИНТЕТИЧЕСКИЕ</text>
+</svg>

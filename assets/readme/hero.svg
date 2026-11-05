@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Тендерная панель — портфолио исходного кода</title>
+  <desc id="desc">Сдержанная техническая обложка и схема потока от источников к проверке требований и расчётам.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10161d"/>
+      <stop offset="1" stop-color="#080b10"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#8793a1" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="360" rx="24" fill="url(#surface)"/>
+  <rect width="1200" height="360" rx="24" fill="url(#grid)"/>
+  <path d="M630 34V326" stroke="#8793a1" stroke-opacity=".2"/>
+  <rect x="64" y="54" width="6" height="22" rx="3" fill="#65e6bd"/>
+  <text x="86" y="72" fill="#aab6c4" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="18" font-weight="600" letter-spacing="2">ПОРТФОЛИО · ИСХОДНЫЙ КОД</text>
+  <text x="64" y="142" fill="#f5f7fa" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="52" font-weight="700" letter-spacing="-1.5">Тендерная панель</text>
+  <text x="66" y="186" fill="#f0f3f7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="22" font-weight="600">Из тендерных документов —</text>
+  <text x="66" y="216" fill="#f0f3f7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="22" font-weight="600">в понятную рабочую картину</text>
+  <text x="66" y="254" fill="#8f9aa7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16">FastAPI backend · 3-колоночный UI · расчётные модули</text>
+  <rect x="66" y="282" width="224" height="36" rx="18" fill="#14251f" stroke="#65e6bd" stroke-opacity=".5"/>
+  <circle cx="85" cy="300" r="4" fill="#65e6bd"/>
+  <text x="98" y="305" fill="#a8f1d8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" letter-spacing=".6">РЕАЛЬНЫЙ СРЕЗ КОДА</text>
+
+  <text x="670" y="69" fill="#8f9aa7" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" letter-spacing="1.2">АРХИТЕКТУРА И ПОТОК ДАННЫХ</text>
+  <path d="M702 158H1112" stroke="#65e6bd" stroke-opacity=".6" stroke-width="2"/>
+  <path d="M836 152L846 158L836 164M975 152L985 158L975 164" fill="none" stroke="#65e6bd" stroke-width="2"/>
+  <g>
+    <rect x="670" y="103" width="122" height="110" rx="14" fill="#111820" stroke="#46515e"/>
+    <text x="688" y="132" fill="#65e6bd" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17">01</text>
+    <text x="688" y="169" fill="#f0f3f7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" font-weight="600">Источники</text>
+    <text x="688" y="193" fill="#9aa6b2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">API · data</text>
+  </g>
+  <g>
+    <rect x="848" y="103" width="122" height="110" rx="14" fill="#111820" stroke="#46515e"/>
+    <text x="866" y="132" fill="#65e6bd" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17">02</text>
+    <text x="866" y="169" fill="#f0f3f7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" font-weight="600">Проверка</text>
+    <text x="866" y="193" fill="#9aa6b2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">rules · view</text>
+  </g>
+  <g>
+    <rect x="1026" y="103" width="122" height="110" rx="14" fill="#111820" stroke="#65e6bd" stroke-opacity=".75"/>
+    <text x="1044" y="132" fill="#65e6bd" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="17">03</text>
+    <text x="1044" y="169" fill="#f0f3f7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" font-weight="600">Расчёты</text>
+    <text x="1044" y="193" fill="#9aa6b2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">domain code</text>
+  </g>
+  <text x="670" y="265" fill="#c3ccd6" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="18">FastAPI / SQLite adapters / vanilla JS UI</text>
+  <text x="670" y="303" fill="#7f8b98" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">CODE-FIRST REPOSITORY · IMMUTABLE SNAPSHOT</text>
+</svg>

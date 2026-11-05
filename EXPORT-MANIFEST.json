@@ -1,0 +1,377 @@
+{
+  "schema": "tender-panel-public-export/v1",
+  "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+  "source_scope": "41 files: application, frontend, backend, scripts, notices and presentation assets; no private history or sensitive data",
+  "release_type": "public portfolio source snapshot, not a running service or production release",
+  "files": [
+    {
+      "path": "README.md",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "bb04cf7db7099f453f1727bc8a87ec0a73d7b8d2a883839e1287db6cd9e40705",
+      "export_sha256": "2b9c63fcac0f67c4fb15eb33e829234d4443d33ec955cd597b66f2e8b09db2df",
+      "source_bytes": 6062,
+      "export_bytes": 7120,
+      "transformation": "portfolio presentation documentation"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "source_commit": null,
+      "source_sha256": null,
+      "export_sha256": "90b2b6dcb3cdf335938fbc8c11739235bc762c5fbcf769fe2cda29a181396601",
+      "source_bytes": null,
+      "export_bytes": 6118,
+      "transformation": "third-party license notices (MapLibre GL)"
+    },
+    {
+      "path": "assets/readme/hero.svg",
+      "source_commit": null,
+      "source_sha256": null,
+      "export_sha256": "30d9cb78d219c8569b318c8737d9b0b1a86dc4d7c620a7466e5fe88d97dd4532",
+      "source_bytes": null,
+      "export_bytes": 4766,
+      "transformation": "synthetic architectural portfolio cover"
+    },
+    {
+      "path": "assets/readme/synthetic-ui.svg",
+      "source_commit": null,
+      "source_sha256": null,
+      "export_sha256": "d6be0545c08938057d66dbf736809a64a23fc3d5a794efc431ae350471478bd2",
+      "source_bytes": null,
+      "export_bytes": 7414,
+      "transformation": "synthetic portfolio UI mockup"
+    },
+    {
+      "path": "index.html",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "cf7e1a4f2abf9e251e5e832d755b299b6740d62a5956f64ce85d50eca92aa18f",
+      "export_sha256": "6d8a686245227e06082c74e9f0c945c0392583b3863fdd1ed5726d3e648fe455",
+      "source_bytes": 52944,
+      "export_bytes": 52935,
+      "transformation": "title brand normalized for portfolio copy"
+    },
+    {
+      "path": "runtime/app/__init__.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "export_bytes": 0,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/address_registry.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "a364f4714732e5a95a9e47d46d025efc44875b4906de7a297bf95e9617971649",
+      "export_sha256": "a364f4714732e5a95a9e47d46d025efc44875b4906de7a297bf95e9617971649",
+      "source_bytes": 8438,
+      "export_bytes": 8438,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/archive_store.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "15f01335b489f41e70768ecfb3e3e2c507c1c9f8bff78e4fa22893806c848912",
+      "export_sha256": "15f01335b489f41e70768ecfb3e3e2c507c1c9f8bff78e4fa22893806c848912",
+      "source_bytes": 8539,
+      "export_bytes": 8539,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/calculation_journal.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "30c1c8ceca8461a56436cf4a9b56f83c6412079bfd6e71fb4a3ca77f68a4ae87",
+      "export_sha256": "30c1c8ceca8461a56436cf4a9b56f83c6412079bfd6e71fb4a3ca77f68a4ae87",
+      "source_bytes": 1917,
+      "export_bytes": 1917,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/config.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "1304c452640f4691c0ce46bfe181c6554f15a19c626819e6b19cbd122431b230",
+      "export_sha256": "902f4e8ff52b33a9f37c4e2737750c8043d33b225d65f66b0e4da1b015429d4e",
+      "source_bytes": 3893,
+      "export_bytes": 3755,
+      "transformation": "private absolute paths replaced; environment hostnames replaced"
+    },
+    {
+      "path": "runtime/app/delivery_address.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "3921f57eb4a955e61cc5fdb7c590fd37aa1929c0dabfb9ae9229bdb491548f84",
+      "export_sha256": "3921f57eb4a955e61cc5fdb7c590fd37aa1929c0dabfb9ae9229bdb491548f84",
+      "source_bytes": 13304,
+      "export_bytes": 13304,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/dellin.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "57a922f3c08c3e1d294130c97697f3a7b59b5d911516ee855de0437dd4c987c5",
+      "export_sha256": "57a922f3c08c3e1d294130c97697f3a7b59b5d911516ee855de0437dd4c987c5",
+      "source_bytes": 9293,
+      "export_bytes": 9293,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/demo_app.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "88576d551505da9a6fb2fb6bd2700a8e6040bae162a09c0ef7f596f4b50a67f9",
+      "export_sha256": "10a5b2c77f7e0e1a4bdbad1e9b482cebafbf3a4ac682b76903722c856e896f49",
+      "source_bytes": 50628,
+      "export_bytes": 50537,
+      "transformation": "private absolute paths replaced; environment hostnames replaced; private host/IP/port values replaced with documentation-safe defaults"
+    },
+    {
+      "path": "runtime/app/document_checklist.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "beaa1e4343f9a13ddea506405ac33f82510a77f7c2bc2a85ff31e952a1288e4a",
+      "export_sha256": "3a60eee72126fdcd5ee47864b1e1b1952e78761ead9ce4b811b5b1a87da36a28",
+      "source_bytes": 20589,
+      "export_bytes": 20592,
+      "transformation": "environment hostnames replaced; corporate document name replaced with generic demo description"
+    },
+    {
+      "path": "runtime/app/economics.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "07608b8530b542169581e6425e2e1edddcb878724407fc990a19783686e8550a",
+      "export_sha256": "07608b8530b542169581e6425e2e1edddcb878724407fc990a19783686e8550a",
+      "source_bytes": 9425,
+      "export_bytes": 9425,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/logistics_calculation.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "b100e138addea81ad7aa154a50711e6f8c8b4fc565e7cd920d357a5707d22393",
+      "export_sha256": "b100e138addea81ad7aa154a50711e6f8c8b4fc565e7cd920d357a5707d22393",
+      "source_bytes": 7270,
+      "export_bytes": 7270,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/logistics_routing.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "82e565089210bdaf6387bc4f750f4831df2812ca8083599608759abcd81fcae2",
+      "export_sha256": "82e565089210bdaf6387bc4f750f4831df2812ca8083599608759abcd81fcae2",
+      "source_bytes": 16828,
+      "export_bytes": 16828,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/logistics_store.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "37ce8d7863f1591ba93db1b11d07c79a150968e2d0f59c88bafca151f51fe7c3",
+      "export_sha256": "4dcc46dfef909adc90440ad951494e2a001a289cbd483209f086ef51dfcaf0ea",
+      "source_bytes": 56726,
+      "export_bytes": 56520,
+      "transformation": "pickup addresses and coordinates replaced with generic regional demo points; carriers sanitized"
+    },
+    {
+      "path": "runtime/app/main.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "8474a0bd0995e69089ca103205b28599d628155c682b4f272f1a24acc027357c",
+      "export_sha256": "8474a0bd0995e69089ca103205b28599d628155c682b4f272f1a24acc027357c",
+      "source_bytes": 81813,
+      "export_bytes": 81813,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/offers_refresh.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "8a48a4578b0c7799684de10bb61d0b38c5a8738c60494f4b7f55d76d416dde2a",
+      "export_sha256": "8a48a4578b0c7799684de10bb61d0b38c5a8738c60494f4b7f55d76d416dde2a",
+      "source_bytes": 24182,
+      "export_bytes": 24182,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/preliminary_earnings.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "3ea5c645095bac7ce38610721fb95f8ae8b95e9a26658688d614042246db274f",
+      "export_sha256": "3ea5c645095bac7ce38610721fb95f8ae8b95e9a26658688d614042246db274f",
+      "source_bytes": 37915,
+      "export_bytes": 37915,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/repository.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "6d48f1d469ad0a3427320dfba6b109d6373d0e77d43a6460aad913a81b45423b",
+      "export_sha256": "6d48f1d469ad0a3427320dfba6b109d6373d0e77d43a6460aad913a81b45423b",
+      "source_bytes": 58195,
+      "export_bytes": 58195,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/search_settings.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "df576d56a746973c210c0d228b90f9c4fe0c95cf60883129d37fc8f94cfb7070",
+      "export_sha256": "df576d56a746973c210c0d228b90f9c4fe0c95cf60883129d37fc8f94cfb7070",
+      "source_bytes": 5651,
+      "export_bytes": 5651,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/sourcing.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "106d5b8ac389b0df4eaa4986fb1c3d083b6d4e1534011523f6b03a488b8a3211",
+      "export_sha256": "106d5b8ac389b0df4eaa4986fb1c3d083b6d4e1534011523f6b03a488b8a3211",
+      "source_bytes": 22089,
+      "export_bytes": 22089,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/sourcing_import.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "da30f3aa169346c2f3844ca7605c4f27be1c67ddf9b34a6e0fd668382a7809d6",
+      "export_sha256": "da30f3aa169346c2f3844ca7605c4f27be1c67ddf9b34a6e0fd668382a7809d6",
+      "source_bytes": 22806,
+      "export_bytes": 22806,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/sourcing_research.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "45307ec254d78e049db8e1108ac37e8d7abb79428ddea7f9912cf1558b90bd74",
+      "export_sha256": "852c7036d08930a592c274bccc7d8066638108c62f721a669c0e77b43a55fba7",
+      "source_bytes": 18311,
+      "export_bytes": 18326,
+      "transformation": "internal adapter hostname replaced; generic private-network guards retained"
+    },
+    {
+      "path": "runtime/app/sourcing_routes.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "5a14d386772cd8b1140d18b85d0511da2c3a08d47060d049a9a6c784486fb27b",
+      "export_sha256": "5a14d386772cd8b1140d18b85d0511da2c3a08d47060d049a9a6c784486fb27b",
+      "source_bytes": 16693,
+      "export_bytes": 16693,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/app/visibility.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "e61ce8e47b02b90e2b41d0f1d9c05f34040307367f9b7635772ff840e2601ff0",
+      "export_sha256": "e61ce8e47b02b90e2b41d0f1d9c05f34040307367f9b7635772ff840e2601ff0",
+      "source_bytes": 5318,
+      "export_bytes": 5318,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/app.js",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "d3bf6a5eb3fe3738354cbcb2069dd1c2b6bdf5a64d8b444221479df6f1881da5",
+      "export_sha256": "d3bf6a5eb3fe3738354cbcb2069dd1c2b6bdf5a64d8b444221479df6f1881da5",
+      "source_bytes": 396732,
+      "export_bytes": 396732,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/favicon.svg",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "9a9f9cd574cf1c18aa6228f3e72220cdb9adf9ffd5e4fa5c8262672cd35828d9",
+      "export_sha256": "9a9f9cd574cf1c18aa6228f3e72220cdb9adf9ffd5e4fa5c8262672cd35828d9",
+      "source_bytes": 441,
+      "export_bytes": 441,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/logistics-demo.css",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "468ade323bccc0170f688be8513fd7be3c5d5f481f31bd36d662a5c90736467c",
+      "export_sha256": "468ade323bccc0170f688be8513fd7be3c5d5f481f31bd36d662a5c90736467c",
+      "source_bytes": 29673,
+      "export_bytes": 29673,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/logistics-demo.js",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "607ceb691b77e3e4e9da969ecf94323fe27783a885c87acf4bd4ac9f05872595",
+      "export_sha256": "607ceb691b77e3e4e9da969ecf94323fe27783a885c87acf4bd4ac9f05872595",
+      "source_bytes": 52918,
+      "export_bytes": 52918,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/map/maplibre-gl.css",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "761a1130f0960ea369d917ec843f7d1af5ca1dcf27701aef1d9d59821b3bab25",
+      "export_sha256": "761a1130f0960ea369d917ec843f7d1af5ca1dcf27701aef1d9d59821b3bab25",
+      "source_bytes": 70024,
+      "export_bytes": 70024,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/map/maplibre-gl.js",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "be56f499e53cec30296f8c6c2603f8f1fa4e3e02f0d68acb172092ec635d1f7a",
+      "export_sha256": "be56f499e53cec30296f8c6c2603f8f1fa4e3e02f0d68acb172092ec635d1f7a",
+      "source_bytes": 1048713,
+      "export_bytes": 1048713,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/search-settings.js",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "8951936172e6f381dde77e1c07df4a5b48b2c783895619797a158bd92729e2a2",
+      "export_sha256": "8951936172e6f381dde77e1c07df4a5b48b2c783895619797a158bd92729e2a2",
+      "source_bytes": 21030,
+      "export_bytes": 21030,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/sourcing-import.js",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "1a3fcd21a2a4de3e3617cf8f54c5206e4571cfb9af5538756bf54a647209a77e",
+      "export_sha256": "1a3fcd21a2a4de3e3617cf8f54c5206e4571cfb9af5538756bf54a647209a77e",
+      "source_bytes": 14633,
+      "export_bytes": 14633,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/sourcing.css",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "e1ca4ecc6b62090ac9803b10a43ed9c1599a4191a43f42f19aad6c86bac5facb",
+      "export_sha256": "e1ca4ecc6b62090ac9803b10a43ed9c1599a4191a43f42f19aad6c86bac5facb",
+      "source_bytes": 9490,
+      "export_bytes": 9490,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/sourcing.js",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "a044098c0c12980b84882e67d404360dbe2cd70253b380b0c2559c0b962f26d8",
+      "export_sha256": "a044098c0c12980b84882e67d404360dbe2cd70253b380b0c2559c0b962f26d8",
+      "source_bytes": 37497,
+      "export_bytes": 37497,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "runtime/assets/styles.css",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "33399a199e3d6dc2836ae25d5636c9bede55ffd9832e7c8c08c0f1d04a05acc4",
+      "export_sha256": "081e639081c288860d673082db074ff1cea2fade59930937d0b8ea1fffb983be",
+      "source_bytes": 140833,
+      "export_bytes": 138808,
+      "transformation": "11 local font-face declarations omitted because redistribution rights were not present"
+    },
+    {
+      "path": "runtime/requirements.txt",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "ba4fefdbc333c438807cccc9700c9ae073836102da7ea5d65aede95c3b3e2e86",
+      "export_sha256": "ba4fefdbc333c438807cccc9700c9ae073836102da7ea5d65aede95c3b3e2e86",
+      "source_bytes": 120,
+      "export_bytes": 120,
+      "transformation": "exact copy"
+    },
+    {
+      "path": "scripts/build_osm_address_index.py",
+      "source_commit": "3195851ebb68612c83bc3a83dbcd562ba74932b7",
+      "source_sha256": "1e35e8c30aa06fcbeee01c8a6def0a9d3c96cdc4e5233087e539ebcfa65e05c9",
+      "export_sha256": "1e35e8c30aa06fcbeee01c8a6def0a9d3c96cdc4e5233087e539ebcfa65e05c9",
+      "source_bytes": 9167,
+      "export_bytes": 9167,
+      "transformation": "exact copy"
+    }
+  ]
+}

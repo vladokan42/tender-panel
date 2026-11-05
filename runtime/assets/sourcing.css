@@ -1,0 +1,94 @@
+/* Scoped v4 workspace; the existing panel sidebar and registry DOM remain intact. */
+.app-workspace.sourcing-view { grid-template-columns:230px minmax(0,1fr); }
+.app-workspace.sourcing-view.sidebar-collapsed { grid-template-columns:54px minmax(0,1fr); }
+.app-workspace.sourcing-view > .list-column,
+.app-workspace.sourcing-view > .detail-column,
+.app-workspace.sourcing-view > #search-settings-pane { display:none; }
+#sourcing-workspace[hidden] { display:none; }
+#sourcing-workspace {
+  --sc-bg:#08090a; --sc-panel:#0f1011; --sc-card:#141619; --sc-border:rgba(255,255,255,.14);
+  --sc-text:#ededef; --sc-muted:#a1a1aa; --sc-orange:#ff6200;
+  grid-column:2 / -1; display:grid; grid-template-columns:260px minmax(0,1fr);
+  min-width:0; min-height:0; height:100%; overflow:hidden;
+  background:var(--sc-bg); color:var(--sc-text); font:12px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+}
+#sourcing-workspace * { box-sizing:border-box; }
+#sourcing-workspace button, #sourcing-workspace input, #sourcing-workspace select, #sourcing-workspace textarea { font:inherit; color:inherit; }
+#sourcing-workspace button { cursor:pointer; border:1px solid var(--sc-border); background:var(--sc-panel); border-radius:5px; padding:5px 8px; min-height:28px; font-size:11px; }
+#sourcing-workspace button:disabled { opacity:.4; cursor:not-allowed; }
+#sourcing-workspace button:not(:disabled):hover { background:#202226; border-color:var(--sc-muted); }
+#sourcing-workspace :focus-visible { outline:2px solid var(--sc-orange); outline-offset:2px; }
+#sourcing-workspace a { color:var(--sc-orange); text-decoration:none; overflow-wrap:anywhere; }
+#sourcing-workspace a:hover { text-decoration:underline; }
+#sourcing-workspace input, #sourcing-workspace select, #sourcing-workspace textarea { min-width:0; max-width:100%; background:var(--sc-bg); border:1px solid var(--sc-border); border-radius:4px; padding:6px 8px; color-scheme:dark; }
+#sourcing-workspace input[type=checkbox] { accent-color:var(--sc-orange); }
+#sourcing-workspace h1 { font-size:16px; margin:0 0 4px; overflow-wrap:anywhere; }
+#sourcing-workspace h2 { font-size:14px; margin:0; }
+#sourcing-workspace h3 { font-size:12px; margin:12px 0 6px; }
+#sourcing-workspace p { margin:6px 0; }
+#sourcing-workspace .sc-muted { color:var(--sc-muted); font-size:11px; }
+#sourcing-workspace .sc-error { color:var(--sc-orange); }
+#sourcing-workspace .sc-row { display:flex; align-items:center; justify-content:space-between; gap:7px; flex-wrap:wrap; }
+#sourcing-workspace .sc-list { display:flex; flex-direction:column; min-width:0; min-height:0; border-right:1px solid var(--sc-border); background:var(--sc-panel); }
+#sourcing-workspace .sc-list > header { padding:12px; border-bottom:1px solid var(--sc-border); }
+#sourcing-search { width:100%; margin-top:8px; }
+#sourcing-categories { flex:1; overflow-y:auto; min-height:0; }
+#sourcing-workspace .sc-category { display:block; width:100%; border:0; border-bottom:1px solid var(--sc-border); border-radius:0; background:none; text-align:left; padding:12px; overflow-wrap:anywhere; }
+#sourcing-workspace .sc-category > b { display:block; margin:6px 0; font-size:12px; }
+#sourcing-workspace .sc-category.sc-selected { background:rgba(255,255,255,.04); box-shadow:inset 2px 0 var(--sc-orange); }
+#sourcing-workspace .sc-list > footer { padding:10px 12px; border-top:1px solid var(--sc-border); }
+#sourcing-workspace .sc-main { display:flex; flex-direction:column; min-width:0; min-height:0; overflow:hidden; }
+#sourcing-workspace .sc-topbar { padding:12px 14px; border-bottom:1px solid var(--sc-border); background:var(--sc-panel); display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+#sourcing-context { padding:12px 14px 8px; }
+#sourcing-workspace .sc-stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin:9px 0 0; }
+#sourcing-workspace .sc-stats > div { border:1px solid var(--sc-border); background:var(--sc-card); border-radius:5px; padding:7px 9px; min-width:0; }
+#sourcing-workspace .sc-stats small { display:block; color:var(--sc-muted); font-size:10px; }
+#sourcing-workspace .sc-stats strong { display:block; font:20px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace; }
+#sourcing-workspace .sc-toolbar { display:flex; flex-wrap:wrap; gap:6px; padding:4px 14px; }
+#sourcing-workspace #sourcing-research-note { padding:0 14px; }
+#sourcing-task { padding:0 14px 7px; font-size:11px; color:var(--sc-orange); overflow-wrap:anywhere; }
+#sourcing-task:empty { display:none; }
+#sourcing-workspace .sc-tabs { display:flex; flex:0 0 38px; overflow-x:auto; border-block:1px solid var(--sc-border); padding:0 8px; gap:4px; }
+#sourcing-workspace .sc-tabs button { border:0; border-bottom:2px solid transparent; border-radius:0; background:none; white-space:nowrap; padding:0 10px; }
+#sourcing-workspace .sc-tabs button[aria-selected=true] { border-bottom-color:var(--sc-orange); color:var(--sc-orange); }
+#sourcing-content { flex:1; min-width:0; min-height:0; overflow:auto; padding:12px 14px; }
+#sourcing-workspace .sc-board { display:flex; gap:8px; max-width:100%; overflow-x:auto; min-height:300px; height:calc(100% - 38px); padding:4px 0 8px; }
+#sourcing-workspace .sc-stage { flex:0 0 220px; width:220px; min-height:0; border:1px solid var(--sc-border); border-radius:6px; background:var(--sc-panel); display:flex; flex-direction:column; }
+#sourcing-workspace .sc-stage > header { padding:10px; border-bottom:1px solid var(--sc-border); font-size:11px; }
+#sourcing-workspace .sc-cards { overflow-y:auto; min-height:0; padding:8px; }
+#sourcing-workspace .sc-card { padding:9px; margin-bottom:8px; background:var(--sc-card); border:1px solid var(--sc-border); border-radius:5px; overflow-wrap:anywhere; }
+#sourcing-workspace .sc-card.sc-highlight { border-color:var(--sc-orange); }
+#sourcing-workspace button.sc-name { background:none; border:0; border-radius:0; text-align:left; padding:0; font-size:12px; font-weight:600; }
+#sourcing-workspace .sc-card-actions { display:flex; flex-direction:column; gap:5px; border-top:1px solid var(--sc-border); padding-top:7px; margin-top:7px; }
+#sourcing-workspace .sc-badge { display:inline-block; border:1px solid var(--sc-border); border-radius:4px; padding:1px 5px; font-size:10px; }
+#sourcing-workspace .sc-empty { padding:25px 8px; color:var(--sc-muted); font-size:11px; text-align:center; }
+#sourcing-workspace .sc-notice { padding:8px 10px; border:1px solid var(--sc-border); background:var(--sc-panel); border-radius:5px; margin-bottom:10px; overflow-wrap:anywhere; }
+#sourcing-workspace .sc-table { max-width:100%; overflow:auto; }
+#sourcing-workspace table { width:100%; border-collapse:collapse; font-size:11px; min-width:650px; table-layout:fixed; }
+#sourcing-workspace th, #sourcing-workspace td { text-align:left; vertical-align:top; border:1px solid var(--sc-border); padding:7px 8px; overflow-wrap:anywhere; }
+#sourcing-workspace th { background:var(--sc-panel); color:var(--sc-muted); font-size:10px; }
+#sourcing-workspace details { margin-top:10px; }
+#sourcing-workspace summary { cursor:pointer; color:var(--sc-muted); }
+#sourcing-workspace pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:11px; }
+#sourcing-status { padding:6px 14px; border-top:1px solid var(--sc-border); font-size:10px; color:var(--sc-muted); overflow-wrap:anywhere; }
+#sourcing-dialog { position:fixed; inset:auto; top:50%; left:50%; transform:translate(-50%,-50%); margin:0; padding:0; width:min(760px,94vw); max-width:94vw; max-height:88vh; background:var(--sc-panel); color:var(--sc-text); border:1px solid var(--sc-border); border-radius:8px; }
+#sourcing-dialog::backdrop { background:rgba(0,0,0,.7); transition:none; }
+#sourcing-dialog { transition:none; opacity:1; }
+#sourcing-dialog:not([open]) { display:none; }
+#sourcing-dialog[open] { display:flex; flex-direction:column; }
+#sourcing-dialog form { display:flex; flex-direction:column; min-height:0; max-height:88vh; width:100%; }
+#sourcing-dialog header, #sourcing-dialog footer { flex-shrink:0; padding:12px 14px; background:var(--sc-bg); }
+#sourcing-dialog header { border-bottom:1px solid var(--sc-border); }
+#sourcing-dialog footer { border-top:1px solid var(--sc-border); }
+#sourcing-workspace .sc-dialog-body { padding:14px; overflow-y:auto; min-height:0; }
+#sourcing-dialog-message { color:var(--sc-orange); font-size:11px; margin-bottom:6px; }
+#sourcing-dialog-message:empty { display:none; }
+#sourcing-workspace .sc-field { display:block; margin:10px 0; }
+#sourcing-workspace .sc-field > span { display:block; color:var(--sc-muted); margin-bottom:4px; font-size:11px; }
+#sourcing-workspace .sc-field input, #sourcing-workspace .sc-field textarea { width:100%; }
+#sourcing-workspace textarea { min-height:170px; resize:vertical; }
+#sourcing-workspace .sc-check { display:flex; align-items:flex-start; gap:7px; margin:7px 0; }
+#sourcing-workspace .sc-check small { display:block; overflow-wrap:anywhere; }
+#sourcing-workspace fieldset { border:1px solid var(--sc-border); min-width:0; }
+@media (max-width:1280px) { .app-workspace.sourcing-view { grid-template-columns:190px minmax(0,1fr); } #sourcing-workspace { grid-template-columns:240px minmax(0,1fr); } }
+@media (max-width:800px) { .app-workspace.sourcing-view { grid-template-columns:minmax(0,1fr); } #sourcing-workspace { grid-column:1 / -1; grid-template-columns:180px minmax(0,1fr); } #sourcing-workspace .sc-stats { grid-template-columns:repeat(2,minmax(0,1fr)); } }

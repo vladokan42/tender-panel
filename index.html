@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тендерная панель — Единый 3-колоночный рабочий стол</title>
+  <link rel="icon" type="image/svg+xml" href="/static/assets/favicon.svg?v=v0.11.146">
+  
+
+
+
+
+
+  <link rel="stylesheet" href="/static/map/maplibre-gl.css">
+  <!-- MapLibre loads only when opening the route map. -->
+  <link rel="stylesheet" href="/static/demo/logistics-demo.css?v=v0.11.145">
+  <link rel="stylesheet" href="/static/assets/styles.css?v=v0.11.145">
+  <link rel="stylesheet" href="/static/assets/sourcing.css?v=v0.11.145">
+</head>
+<body class="preload">
+
+  <div class="app-workspace">
+    <!-- КОЛОНКА 1 -->
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-info">
+          <div class="brand-mark">ОК</div>
+          <div class="brand-title-wrap">
+            <div class="brand-title">ТЕНДЕРНЫЙ ПОРТАЛ</div>
+            <div class="brand-sub" id="panel-version">Версия панели: v0.11.146</div>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" type="button" title="Свернуть/развернуть меню">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="nav-section">
+        <div class="nav-head">Ключи поиска</div>
+        <a class="nav-item active" id="nav-tenders-btn" data-panel-view="registry" href="javascript:void(0)" onclick="window.openTenderWorkspace(); return false;" title="Все закупки" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+              <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            </svg>
+            <span class="nav-text">Все закупки</span>
+          </div>
+          <span class="nav-counter" id="nav-total-count">5</span>
+        </a>
+        <button type="button" class="nav-item" id="nav-sourcing-btn" data-panel-view="sourcing" title="Поиск поставщиков · DEMO" style="display:flex;align-items:center;gap:8px;width:100%;background:none;border:0;text-align:left;cursor:pointer;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg><span class="nav-text">Поиск поставщиков · DEMO</span>
+        </button>
+
+        </nav>
+
+      
+
+      
+    
+      <nav class="nav-section" style="margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-subtle);">
+        <a class="nav-item" href="javascript:void(0)" onclick="window.openBoardUISettingsModal(); return false;" id="btn-open-search-settings" title="Настройка поиска" style="cursor:pointer; display:flex; align-items:center; justify-content:flex-start; gap:8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span class="nav-text" style="font-size:12px; font-weight:500; color:#9ca3af;">Настройка поиска</span>
+        </a>
+      </nav>
+
+</aside>
+
+    
+<!-- КОЛОНКА 2 -->
+    <section class="list-column">
+      <div class="list-toolbar">
+        <div class="search-input-wrap">
+          <input type="text" id="search-input" placeholder="Поиск: ID, номер, название, заказчик" oninput="filterCards(); updateSearchClear();">
+          <button type="button" class="search-clear-btn" id="search-clear-btn" onclick="clearSearch()" aria-label="Очистить поиск" hidden>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="boardui-filters-wrap" role="group" aria-label="Фильтры реестра">
+          <!-- Filter 1: Statuses -->
+          <details class="group relative boardui-details" id="details-status">
+            <summary>
+              <span id="filter-summary-status">Статусы</span>
+              <span class="filter-reset-btn" id="reset-btn-status" title="Сбросить статусы" onclick="window.resetSingleFilter(event, 'status')" hidden>✕</span>
+              <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+            </summary>
+            <div class="boardui-popover">
+              <div class="boardui-pop-body">
+                <label class="boardui-check-label">
+                  <div><input type="radio" name="boardui-reg-tab" data-registry-filter="live" checked onclick="setRegistryTab('live')">Живая проверка</div>
+                  <strong data-filter-count="live">0</strong>
+                </label>
+                <label class="boardui-check-label">
+                  <div><input type="radio" name="boardui-reg-tab" data-registry-filter="all" onclick="setRegistryTab('all')">Все закупки</div>
+                  <strong data-filter-count="all">0</strong>
+                </label>
+                <label class="boardui-check-label">
+                  <div><input type="radio" name="boardui-reg-tab" data-registry-filter="archive" onclick="setRegistryTab('archive')">Архив / Срок прошёл</div>
+                  <strong data-filter-count="archive">0</strong>
+                </label>
+                <label class="boardui-check-label">
+                  <div><input type="radio" name="boardui-reg-tab" data-registry-filter="my-archive" onclick="setRegistryTab('my-archive')">Мой архив</div>
+                  <strong data-filter-count="my-archive">0</strong>
+                </label>
+              </div>
+            </div>
+          </details>
+
+          <!-- Filter 2: Price -->
+          <details class="group relative boardui-details" id="details-price">
+            <summary>
+              <span id="filter-summary-price">Цена</span>
+              <span class="filter-reset-btn" id="reset-btn-price" title="Сбросить цену" onclick="window.resetSingleFilter(event, 'price')" hidden>✕</span>
+              <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+            </summary>
+            <div class="boardui-popover">
+              <div class="boardui-pop-body" style="flex-direction:row; gap:8px; padding-top:4px;">
+                <div style="flex:1;">
+                  <span style="font-size:10px; color:#9ca3af; display:block; margin-bottom:4px;">Мин, ₽</span>
+                  <input type="number" id="MinPrice" placeholder="0" class="boardui-input-num" oninput="filterCards()">
+                </div>
+                <div style="flex:1;">
+                  <span style="font-size:10px; color:#9ca3af; display:block; margin-bottom:4px;">Макс, ₽</span>
+                  <input type="number" id="MaxPrice" placeholder="без огр." class="boardui-input-num" oninput="filterCards()">
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Filter 3: Regions & Conditions -->
+          <details class="group relative boardui-details" id="details-extra">
+            <summary>
+              <span id="filter-summary-extra">Регионы и Условия</span>
+              <span class="filter-reset-btn" id="reset-btn-extra" title="Сбросить условия" onclick="window.resetSingleFilter(event, 'extra')" hidden>✕</span>
+              <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+            </summary>
+            <div class="boardui-popover" style="width:240px;">
+              <div class="boardui-pop-body">
+                <label style="font-size:11px; color:#9ca3af; margin-bottom:2px;">Регион закупки:</label>
+                <select id="registry-region-select" class="boardui-input-num" style="margin-bottom:6px;" onchange="filterCards()">
+                  <option value="">Все регионы</option>
+                </select>
+
+                <label class="boardui-check-label">
+                  <div><input type="checkbox" id="chk-has-margin" onchange="filterCards()"> С рассчитанной маржой</div>
+                </label>
+                <label class="boardui-check-label">
+                  <div><input type="checkbox" id="chk-has-docs" onchange="filterCards()"> С документами</div>
+                </label>
+                <label class="boardui-check-label">
+                  <div><input type="checkbox" id="chk-no-rnp" onchange="filterCards()"> Без РНП</div>
+                </label>
+              </div>
+            </div>
+          </details>
+        </div>
+        <div id="registry-filter-summary" class="registry-filter-summary" aria-live="polite" style="display:none;"></div>
+      </div>
+
+      <div class="registry-tabs" role="tablist" aria-label="Разделы реестра">
+        <button type="button" class="registry-tab active" data-registry-tab="live" role="tab" aria-selected="true" onclick="setRegistryTab('live')">Активные <span class="registry-tab-count" data-tab-count="live">0</span></button>
+        <button type="button" class="registry-tab" data-registry-tab="archive" role="tab" aria-selected="false" onclick="setRegistryTab('archive')">Архивные <span class="registry-tab-count" data-tab-count="archive">0</span></button>
+      </div>
+
+      <div class="cards-scroll" id="cards-container">
+        <article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 80%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 50%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 90px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 95%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 65%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 85px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 80%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 65%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 90px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 95%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 50%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 85px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 80%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 65%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 90px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 95%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 65%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 85px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 80%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 50%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 90px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 95%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 65%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 85px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 80%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 65%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 90px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article><article class="t-card" style="pointer-events: none; border: 1px solid var(--border-line) !important; border-radius: 8px !important; background: var(--bg-card) !important; display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; margin-bottom: 6px;"><div style="display: flex; gap: 4px; align-items: center;"><div class="okan-ske" style="height: 14px; width: 44px; border-radius: 3px;"></div><div class="okan-ske" style="height: 14px; width: 72px; border-radius: 3px;"></div></div><div class="okan-ske" style="height: 14px; width: 95%; border-radius: 4px; margin-top: 2px;"></div><div class="okan-ske" style="height: 14px; width: 50%; border-radius: 4px;"></div><div class="t-foot" style="margin-top: 2px; border-top: 1px solid var(--border-line); padding-top: 6px; display: flex; justify-content: space-between; align-items: center;"><div class="okan-ske" style="height: 18px; width: 85px; border-radius: 4px;"></div><div class="okan-ske" style="height: 14px; width: 70px; border-radius: 4px;"></div></div></article>
+      </div>
+
+      <div class="pagination-bar">
+        <nav aria-label="Pagination" class="boardui-pagination">
+          <ol>
+            <li>
+              <button class="boardui-pag-btn" id="prev-page-btn" onclick="changePage(-1)" type="button" disabled aria-label="Предыдущая страница">
+                <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                <span>Назад</span>
+              </button>
+            </li>
+            <li style="display:flex;align-items:center;gap:6px;">
+              <div id="boardui-page-numbers" class="boardui-page-nums"></div>
+              
+            </li>
+            <li>
+              <button class="boardui-pag-btn" id="next-page-btn" onclick="changePage(1)" type="button" disabled aria-label="Следующая страница">
+                <span>Вперёд</span>
+                <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- КОЛОНКА 3 -->
+    <main class="detail-column" id="detail-pane">
+      <div class="top-command-bar">
+        <nav aria-label="Breadcrumb" class="boardui-breadcrumb">
+          <ol>
+            <li><a href="#" class="bread-link" onclick="event.preventDefault()">Реестр</a></li>
+            <li class="bread-sep" aria-hidden="true">
+              <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </li>
+            <li><a href="#" class="bread-link" onclick="event.preventDefault()">Закупки</a></li>
+            <li class="bread-sep" aria-hidden="true">
+              <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </li>
+            <li><span class="bread-current" id="det-id">Выбор закупки...</span></li>
+          </ol>
+        </nav>
+        <div class="top-actions">
+          <button class="btn-action contradiction-action" id="contradiction-action" type="button" aria-expanded="false" aria-controls="contradiction-dialog" hidden disabled>Противоречия</button>
+          <button class="btn-action warning-action" id="warning-action" type="button" aria-expanded="false" aria-controls="warning-dialog" hidden disabled>Предупреждение</button>
+          <div class="boardui-button-group" role="group" aria-label="Действия с закупкой">
+            <div class="source-dropdown-wrap">
+              <button class="boardui-group-item" id="source-dropdown-btn" type="button" onclick="window.toggleSourceMenu(event)" aria-haspopup="true" aria-expanded="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Источник</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;opacity:0.6;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="source-dropdown-menu" id="source-dropdown-menu" style="display:none;">
+                <a class="source-dropdown-item" id="det-link-eis" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                  <span>Официальный источник</span>
+                </a>
+                <div id="det-link-official-extra"></div>
+                <a class="source-dropdown-item" id="det-link-agg" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  <span>Агрегатор (РосТендер)</span>
+                </a>
+                <div class="source-dropdown-item source-no-links" id="no-links-msg" style="display:none;opacity:0.5;">Ссылки не найдены</div>
+              </div>
+            </div>
+            <button class="boardui-group-item archive-action" id="archive-action-button" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                <rect x="1" y="3" width="22" height="5"></rect>
+                <line x1="10" y1="12" x2="14" y2="12"></line>
+              </svg>
+              <span id="archive-button-text">В архив</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-title-row">
+        <h1 class="detail-title" id="det-title">Выберите закупку из реестра слева</h1>
+        
+      </div>
+
+      <div class="kpi-row kpi-grid">
+        <div class="kpi-box"><div class="kpi-lbl">Начальная цена (НМЦК)</div><div class="kpi-num" id="det-price">—</div><div class="kpi-sub" id="det-law">Закон: —</div></div>
+        <div class="kpi-box"><div class="kpi-lbl">Этап / Срок</div><div class="kpi-num" id="det-stage">—</div><div class="kpi-sub" id="det-end-date">Срок не указан</div></div>
+        <div class="kpi-box"><div class="kpi-lbl">Обеспечение заявки</div><div class="kpi-num" id="det-assurance">—</div><div class="kpi-sub" id="det-etp">Источник: —</div></div>
+        <div class="kpi-box"><div class="kpi-lbl">Статус проверки</div><div class="kpi-num" id="det-risk-status">—</div><div class="kpi-sub" id="det-card-counts">0 строк · 0 документов</div></div>
+        <div class="kpi-box"><div class="kpi-lbl">Заработок с тендера</div><div class="kpi-num" id="det-profit">—</div><div class="kpi-sub" id="det-profit-margin">Маржа: —</div></div>
+      </div>
+
+      <div class="detail-tabs-row">
+      <nav class="detail-tabs" role="tablist" aria-label="Разделы карточки тендера">
+        <button class="detail-tab active" data-detail-tab="main" data-tab="main" role="tab" aria-selected="true">
+          <span>Основное</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="products" data-tab="products" role="tab" aria-selected="false">
+          <span>Товары</span>
+          <span class="detail-tab-badge">5</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="dates" data-tab="dates" role="tab" aria-selected="false">
+          <span>Сроки</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="documents" data-tab="documents" role="tab" aria-selected="false">
+          <span>Документы</span>
+          <span class="detail-tab-badge">4</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="eligibility" data-tab="eligibility" role="tab" aria-selected="false">
+          <span>Допуск</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="inspection" data-tab="inspection" role="tab" aria-selected="false">
+          <span>Товарная проверка</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="suppliers" data-tab="suppliers" role="tab" aria-selected="false">
+          <span>Поставщики</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="economics" data-tab="economics" role="tab" aria-selected="false">
+          <span>Экономика</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="logistics" data-tab="logistics" role="tab" aria-selected="false">
+          <span>Логистика</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="contract" data-tab="contract" role="tab" aria-selected="false">
+          <span>Заявка и контракт</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="execution" data-tab="execution" role="tab" aria-selected="false">
+          <span>Исполнение</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="control" data-tab="control" role="tab" aria-selected="false">
+          <span>Контроль</span>
+        </button>
+        <button class="detail-tab" data-detail-tab="technical" data-tab="technical" role="tab" aria-selected="false">
+          <span>Тех. данные</span>
+        </button>
+      </nav>
+      <button id="offers-refresh-action" class="btn-action btn-orange offers-refresh-action" type="button" aria-describedby="offers-refresh-status" hidden>Обновить товары</button>
+      </div>
+      <div id="offers-refresh-status" class="offers-refresh-status" role="status" hidden></div>
+
+      <section class="detail-workarea" id="det-detail-content" aria-live="polite">
+        <div class="loading-detail">Выберите закупку для просмотра полной карточки</div>
+      </section>
+    </main>
+    
+<main class="search-settings-pane" id="search-settings-pane" aria-live="polite">
+  <div class="boardui-modal-card">
+    <div class="boardui-modal-header">
+      <div class="boardui-modal-title">
+        <svg style="width:16px; height:16px; stroke:#ff6200; fill:none;" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        <span>Настройки поиска и контура</span>
+      </div>
+      <button class="boardui-modal-close" onclick="window.closeBoardUISettingsModal()" type="button">✕</button>
+    </div>
+
+    <div class="boardui-modal-body">
+      <nav class="boardui-modal-sidebar">
+        <button class="boardui-modal-nav-btn active" onclick="window.switchSettingsTab('types', this)" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>1. Процедуры и Статусы</button>
+        <button class="boardui-modal-nav-btn" onclick="window.switchSettingsTab('price', this)" type="button"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>2. НМЦК и Лоты</button>
+        <button class="boardui-modal-nav-btn" onclick="window.switchSettingsTab('participation', this)" type="button"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>3. Участие и Регионы</button>
+        <button class="boardui-modal-nav-btn" onclick="window.switchSettingsTab('history', this)" type="button"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>4. Активные правила</button>
+      </nav>
+
+      <div class="boardui-modal-content-area">
+        <!-- TAB 1 -->
+        <div id="set-page-types" class="settings-page">
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Закупки малого объёма</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="types.small"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Коммерческие закупки</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="types.commercial"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Запросы цен и исследования рынка</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="types.research"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Исключать отменённые закупки</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="statuses.cancelled"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Исключать завершённые закупки</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="statuses.completed"><span class="search-slider"></span></label>
+          </div>
+        </div>
+
+        <!-- TAB 2 -->
+        <div id="set-page-price" class="settings-page" style="display:none;">
+          <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8d9ba8; margin: 0 0 4px 0; padding-top: 4px;">Диапазон НМЦК</div>
+          <div class="boardui-list-item" style="padding-top: 8px;">
+            <div><div class="boardui-list-title">Минимальная НМЦК</div></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <input class="search-number-input" data-search-price="min" placeholder="Сумма в ₽" style="width:110px; height:28px; font-size:12px;">
+              <label class="search-switch"><input type="checkbox" data-search-switch="price.minEnabled"><span class="search-slider"></span></label>
+            </div>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Максимальная НМЦК</div></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <input class="search-number-input" data-search-price="max" placeholder="Сумма в ₽" style="width:110px; height:28px; font-size:12px;">
+              <label class="search-switch"><input type="checkbox" data-search-switch="price.maxEnabled"><span class="search-slider"></span></label>
+            </div>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Цена не указана (223-ФЗ)</div></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <details class="group relative boardui-details custom-select" id="details-missing-action">
+                <summary style="border:1px solid var(--border-line); border-radius:6px; background:transparent; padding:0 8px; height:28px; width:170px; justify-content:space-between; display:flex; align-items:center; list-style:none; cursor:pointer;" >
+                  <span class="value-text" style="font-size:12px; font-weight:400; color:#edf2f7;">Проверить вручную</span>
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7; transition:transform 0.2s;"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="boardui-popover" style="min-width:170px; padding:4px; top:calc(100% + 4px); left:auto; right:0; position:absolute; z-index:100; background:var(--bg-main); border:1px solid var(--border-line); border-radius:8px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.5);">
+                  <div style="display:flex; flex-direction:column; gap:2px;">
+                    <button type="button" class="select-item active" data-value="MANUAL_REVIEW" onclick="window.selectMissingAction('MANUAL_REVIEW', 'Проверить вручную', this)">Проверить вручную</button>
+                    <button type="button" class="select-item" data-value="EXCLUDE" onclick="window.selectMissingAction('EXCLUDE', 'Исключить закупку', this)">Исключить закупку</button>
+                  </div>
+                </div>
+              </details>
+              <input type="hidden" id="search-missing-action" value="MANUAL_REVIEW">
+              
+              <label class="search-switch"><input type="checkbox" data-search-switch="price.missingEnabled"><span class="search-slider"></span></label>
+            </div>
+          </div>
+
+          <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8d9ba8; margin: 16px 0 4px 0;">Режим лотов</div>
+          <div class="boardui-list-item" style="padding-top: 8px;">
+            <div><div class="boardui-list-title">Режим обработки лотов</div></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <details class="group relative boardui-details custom-select" id="details-lots-mode">
+                <summary style="border:1px solid var(--border-line); border-radius:6px; background:transparent; padding:0 8px; height:28px; width:170px; justify-content:space-between; display:flex; align-items:center; list-style:none; cursor:pointer;" >
+                  <span class="value-text" style="font-size:12px; font-weight:400; color:#edf2f7;">Только наши товары</span>
+                  <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7; transition:transform 0.2s;"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="boardui-popover" style="min-width:170px; padding:4px; top:calc(100% + 4px); left:auto; right:0; position:absolute; z-index:100; background:var(--bg-main); border:1px solid var(--border-line); border-radius:8px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.5);">
+                  <div style="display:flex; flex-direction:column; gap:2px;">
+                    <button type="button" class="select-item active" data-value="ONLY_OUR" onclick="window.selectLotsMode('ONLY_OUR', 'Только наши товары', this)">Только наши товары</button>
+                    <button type="button" class="select-item" data-value="ALLOW_MIXED" onclick="window.selectLotsMode('ALLOW_MIXED', 'Разрешать смешанные', this)">Разрешать смешанные</button>
+                    <button type="button" class="select-item" data-value="EXCLUDE_MIXED" onclick="window.selectLotsMode('EXCLUDE_MIXED', 'Исключать смешанные', this)">Исключать смешанные</button>
+                    <button type="button" class="select-item" data-value="MANUAL_REVIEW" onclick="window.selectLotsMode('MANUAL_REVIEW', 'Ручная проверка', this)">Ручная проверка</button>
+                  </div>
+                </div>
+              </details>
+              <input type="hidden" id="search-lots-mode" value="ONLY_OUR">
+              
+            </div>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Минимальная доля подходящих строк</div></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="position:relative; width:54px; height:28px;"><input id="search-share" type="number" min="0" max="100" class="search-number-input" style="width:100%; height:100%; font-size:12px; padding:0 12px 0 0; text-align:center; line-height:26px;"><span style="position:absolute; right:6px; top:50%; transform:translateY(-50%); color:#8d9ba8; font-size:11px; pointer-events:none;">%</span></div>
+              <label class="search-switch"><input type="checkbox" data-search-switch="lots.shareEnabled"><span class="search-slider"></span></label>
+            </div>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Исключать неподходящую обязательную строку</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="lots.excludeUnsuitable"><span class="search-slider"></span></label>
+          </div>
+        </div>
+
+        <!-- TAB 3 -->
+        <div id="set-page-participation" class="settings-page" style="display:none;">
+          <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8d9ba8; margin: 0 0 4px 0; padding-top: 4px;">Участие</div>
+          <div class="boardui-list-item" style="padding-top: 8px;">
+            <div><div class="boardui-list-title">Исключать закупки только для МСП</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="participation.msp"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Исключать только для СМП/СОНКО</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="participation.smp"><span class="search-slider"></span></label>
+          </div>
+
+          <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8d9ba8; margin: 16px 0 4px 0;">Условия контракта</div>
+          <div class="boardui-list-item" style="padding-top: 8px;">
+            <div><div class="boardui-list-title">Разовая поставка</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="delivery.one"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Периодическая поставка</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="delivery.periodic"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Исключать с обеспечением исполнения</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="delivery.security"><span class="search-slider"></span></label>
+          </div>
+
+          <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #8d9ba8; margin: 16px 0 4px 0;">География</div>
+          <div class="boardui-list-item" style="padding-top: 8px;">
+            <div><div class="boardui-list-title">Санкт-Петербург</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="regions.spb"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Ленинградская область</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="regions.lo"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Москва</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="regions.moscow"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Московская область</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="regions.mo"><span class="search-slider"></span></label>
+          </div>
+          <div class="boardui-list-item">
+            <div><div class="boardui-list-title">Все регионы</div></div>
+            <label class="search-switch"><input type="checkbox" data-search-switch="regions.all"><span class="search-slider"></span></label>
+          </div>
+        </div>
+
+        <!-- TAB 4 -->
+        <div id="set-page-history" class="settings-page" style="display:none;">
+          <div class="search-rules" id="search-settings-rules">
+            <p style="font-size:12px; color:#8d9ba8;">Все условия выключены. Ограничения не применяются.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER WITH BOARDUI BUTTONS -->
+    <div class="boardui-modal-footer">
+      <input class="boardui-input-comment" id="search-settings-comment" placeholder="Комментарий к версии">
+      <button class="btn-bui btn-bui-danger search-settings-reset" id="search-settings-reset" type="button">Сбросить все</button>
+      <button class="btn-bui btn-bui-primary" id="search-settings-save" type="button">Сохранить новую версию</button>
+    </div>
+  </div>
+</main>
+
+  </div>
+
+  
+<dialog class="match-explanation-dialog" id="match-explanation-dialog" aria-labelledby="match-explanation-title">
+  <div class="match-explanation-head">
+    <h2 id="match-explanation-title">Пояснение сопоставления</h2>
+    <button class="btn-action btn-outline" id="match-explanation-close" type="button">Закрыть</button>
+  </div>
+  <div class="match-explanation-body" id="match-explanation-body"></div>
+</dialog>
+<dialog class="warning-dialog" id="warning-dialog" aria-labelledby="warning-dialog-title" aria-describedby="warning-dialog-count">
+  <div class="warning-dialog-head">
+    <div><h2 id="warning-dialog-title">Предупреждения закупки</h2><div class="warning-item-meta" id="warning-dialog-count"></div></div>
+    <button class="btn-action btn-outline" id="warning-close" type="button">Закрыть</button>
+  </div>
+  <div class="warning-dialog-body"><ul class="warning-list" id="warning-list"></ul></div>
+</dialog>
+<dialog class="warning-dialog contradiction-dialog" id="contradiction-dialog" aria-labelledby="contradiction-dialog-title" aria-describedby="contradiction-dialog-count">
+  <div class="warning-dialog-head contradiction-dialog-head">
+    <div><h2 id="contradiction-dialog-title">Противоречия условий</h2><div class="warning-item-meta" id="contradiction-dialog-count"></div></div>
+    <button class="btn-action btn-outline" id="contradiction-close" type="button">Закрыть</button>
+  </div>
+  <div class="warning-dialog-body">
+    <p class="contradiction-dialog-note">Показаны сохранённые записи документного анализа. Счётчик означает число записей анализа, а не число независимо подтверждённых противоречий. Разные действия и события не объединяются автоматически; исходные неизвестности и ограничения сохранены.</p>
+    <ul class="warning-list" id="contradiction-list"></ul>
+    <div id="contradiction-related-terms"></div>
+  </div>
+</dialog>
+<template id="manual-archive-template">
+<dialog class="archive-dialog" id="archive-dialog" aria-labelledby="archive-dialog-title">
+  <form id="archive-form" novalidate>
+    <h2 id="archive-dialog-title">В архив</h2>
+    <p id="archive-dialog-note">Выберите причину. Запись появится в журнале «Мой архив», исходная карточка не меняется.</p>
+    <label>Причина
+      <select id="archive-reason" required>
+        <option value="OUT_OF_ASSORTMENT">Вне нашего ассортимента</option>
+        <option value="BAD_CATEGORY_OR_COLLECTION">Неверная категория или плохо собранные товары</option>
+        <option value="UNWANTED_TERMS">Не подходят условия закупки</option>
+        <option value="DUPLICATE">Дубль</option>
+        <option value="OTHER">Другое</option>
+      </select>
+    </label>
+    <label>Пояснение <span id="archive-reason-required" hidden>(обязательно для «Другое»)</span>
+      <textarea id="archive-reason-text" maxlength="500" aria-describedby="archive-dialog-note"></textarea>
+    </label>
+    <p class="archive-notice" id="archive-notice" role="status" aria-live="polite"></p>
+    <div class="archive-dialog-actions"><button class="btn-action btn-outline" type="button" id="archive-cancel">Отмена</button><button class="btn-action archive-action" type="submit" id="archive-confirm">Подтвердить</button></div>
+  </form>
+</dialog>
+</template>
+
+
+
+
+
+
+
+
+  <script>
+    const panelPrefix = location.pathname.startsWith('/tender-v2/') ? '/tender-v2' : '';
+    document.write('<script src="' + panelPrefix + '/static/assets/app.js?v=v0.11.146"><' + '/script>');
+  </script>
+  <script src="/static/assets/sourcing.js?v=v0.11.145"></script>
+  <script src="/static/assets/sourcing-import.js?v=v0.11.145"></script>
+</body>
+</html>
